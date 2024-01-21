@@ -88,13 +88,12 @@ function fetchUserInfoAndRepos(username, page = 1, pageSize = 10, filterTerm = '
 function fetchRepositories(user, page, pageSize, filterTerm) {
     const per_page = filterTerm ? user.public_repos : pageSize
     const API_URL = `https://api.github.com/users/${user.login}/repos?page=${page}&per_page=${per_page}`;
-    console.log("API_URL", API_URL);
+
 
     // Fetch user repositories for the specified page and page size
     fetch(API_URL)
         .then(response => response.json())
         .then(repositories => {
-            console.log(repositories);
 
             const filteredRepositories = filterRepositories(repositories, filterTerm);
 
@@ -165,8 +164,6 @@ function handlePaginationControls(user, currentPage, pageSize, totalRepositories
     const pageSizeSelect = document.createElement('select');
     pageSizeSelect.addEventListener('change', function () {
         // Handle change in page size
-        console.log("pageSizeSelect.value", pageSizeSelect.value);
-        console.log("user", user);
         fetchUserInfoAndRepos(user.login, 1, parseInt(pageSizeSelect.value), filterTerm);
     });
 
@@ -187,7 +184,6 @@ function handlePaginationControls(user, currentPage, pageSize, totalRepositories
 
     // Calculate the number of pages
     const totalPages = Math.ceil(totalRepositories / pageSize);
-    console.log("totalPages", totalPages)
 
     // Create page navigation buttons
     for (let i = 1; i <= totalPages; i++) {
@@ -245,7 +241,7 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('repositoryFilter').addEventListener('input', function (event) {
         // Fetch the value from the input field
         const filterTerm = event.target.value.trim().toLowerCase();
-        console.log("filterTerm", filterTerm);
+
         // Fetch repositories based on user input (assume default pagination settings for simplicity)
         // const username = document.getElementById('usernameInput').value.trim();
         const username = localStorage.getItem('username');
