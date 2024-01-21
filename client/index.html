@@ -3,12 +3,53 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <title>CodePlex</title>
   </head>
   <body>
+    <script src="js/script.js"></script>
     <!-- Content goes here -->
-
-    <script src="/js/script.js"></script>
+    <div class="header">
+      <div class="nav-links">
+        <a href="#default" class="logo">CodePlex</a>
+        <form id="gitHubForm">
+          <input
+            type="text"
+            id="usernameInput"
+            placeholder="GitHub username..."
+          />
+        </form>
+        <div class="header-right">
+          <button id="contact" onclick="contact()">Contact</button>
+        </div>
+      </div>
+    </div>
+    <div class="main-content">
+      <div class="user-header">
+        <img id="avatar" alt="User Avatar" />
+        <div class="user-info">
+          <div class="h1" id="user-name"></div>
+          <div class="h4" id="user-bio"></div>
+          <div class="h4" id="user-location"></div>
+          <a id="user-link"></a>
+        </div>
+      </div>
+      <input
+        type="text"
+        id="repositoryFilter"
+        placeholder="Filter Repositories..."
+      />
+      <div id="pagination-controls"></div>
+      <div id="loader"></div>
+      <div id="repositories-container"></div>
+      <div id="loader"></div>
+      <!-- <div>Repositories</div> -->
+    </div>
   </body>
 </html>
