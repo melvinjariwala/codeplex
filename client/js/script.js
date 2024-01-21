@@ -60,7 +60,7 @@ function contact() {
 function fetchUserInfoAndRepos(username, page = 1, pageSize = 10, filterTerm = '') {
     // Fetch user information from the server
     showLoader();
-    fetch(`http://api.github.com/users/${username}`)
+    fetch(`https://api.github.com/users/${username}`)
         .then(response => response.json())
         .then(userInfo => {
             // Update image source with user's avatar
